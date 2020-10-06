@@ -1,0 +1,331 @@
+1.	Predict the output of the following code snippets:
+
+#include<iostream>
+  
+using namespace std;
+classBase1 {
+ public:
+     Base1(){
+cout<< " Base1's constructor called"<<endl;  
+}
+};
+  
+classBase2 {
+ public:
+     Base2(){ 
+cout<< "Base2's constructor called"<<endl;  
+}
+};
+  
+classDerived: publicBase1, publicBase2 {
+   public:
+     Derived(){
+  cout<< "Derived's constructor called"<<endl;  
+}
+};
+  
+int main()
+{
+   Derived d;
+   return0;
+}
+
+Options:
+A.	Compiler Dependent
+
+B.	Base1’s constructor called
+	Base2’s constructor called
+	Derived’s constructor called
+
+C.	Base2’s constructor called
+	Base1’s constructor called
+	Derived’s constructor called
+D.	Compilation Error
+
+
+Ans:
+	The output will be---- 
+	Base'1s constructer called, 
+	Base2's constructer called, 
+	Derived's constructer called(Because base class constructer is called before derived class constructer.) 
+
+	option B is correct.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+2.	Predict the output of the following code snippets:
+#include<iostream>
+  
+using namespace std;
+classP {
+public:
+   voidprint()  { cout<<" Inside P"; }
+};
+classQ : publicP {
+public:
+   voidprint() { cout<<" Inside Q"; }
+};
+  
+classR: publicQ { };
+  
+int main(void)
+{
+  R r; 
+  r.print();
+  return 0;
+}
+
+Options:
+A.	Inside P
+B.	Inside Q
+C.	Compilation Error
+D.	Program will run without output
+
+Ans:	The output will be compilation Error (because class Q's function will be called.)
+	The correct option is B.
+------------------------------------------------------------------------------------------------------------------------------------------
+3.	Predict the output of the following code snippets:
+1.	#include<iostream>
+2.	using namespace std;
+
+3.	classBase {};
+
+4.	classDerived: publicBase {};
+
+5.	int main()
+6.	{
+7.	Base *bp = newDerived;
+8.	Derived *dp = newBase;
+9.	}
+
+Options:
+A.	No Compilation Error
+B.	Runtime Error
+C.	Compilation Error in line 7
+D.	Compilation Error in line 8
+
+
+
+Ans:    it will throw compilation Error in line 8.(because new function can intialize memory in the base class,but the data type is not defined here)
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+4.	Predict the output of the following code snippets:
+
+1.	#include<iostream>
+2.	using namespace std;
+
+3.	classBase
+4.	{
+5.	public:
+6.	voidshow()
+7.	{
+8.	cout<<" In Base ";
+9.	}
+10.	};
+
+11.	classDerived: publicBase
+12.	{
+13.	public:
+14.	intx;
+15.	voidshow()
+16.	{
+17.	cout<<"In Derived ";
+18.	}
+19.	Derived()
+20.	{
+21.	x = 10;
+22.	}
+23.	};
+
+24.	int main(void)
+25.	{
+26.	Base *bp, b;//creating a pointer object bp, and another object b in base class
+27.	Derived d;//creating a derived object d
+28.	bp = &d;//bp holds the address
+29.	bp->show();//calling the show method from derived class
+30.	cout<<bp->x;//showing the value    
+31.	return 0;
+32.	}
+
+Options:
+A.	In Base 10
+B.	In Derived 10
+C.	Compilation Error in line 30
+D.	Compilation Error in line 31
+
+
+
+Ans:	The output will be Option b(In derived 10).
+------------------------------------------------------------------------------------------------------------------------------------------------
+5.	Predict the output of the following code snippets:
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+int legs = 4;
+};
+
+class Dog : public Animal
+{
+public:
+int tail = 1;
+};
+
+int main()
+{
+  Dog d;
+cout<<d.legs;
+cout<<d.tail;
+}
+
+Options:
+A.	Error
+B.	44
+C.	40
+D.	41
+
+
+
+
+Ans:	The output will be 41.(Option d)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+6.	Predict the output of the following code snippets:
+#include <iostream>
+using namespace std;
+
+int main() {
+inti = 0, x = 0;
+
+do{
+if(i % 5 == 0)    {
+cout<<x;
+x++;
+    }
+
+    ++i;
+}while(i<10);
+
+cout<<x;
+
+return 0;
+}
+Options:
+A.	01
+B.	012
+C.	0
+D.	0123
+
+
+Ans:	The output will be 012(Option B)
+
+	i       x
+	0	0
+	5	1
+	10(the loop will terminate)
+	the last cout will hold the x value=2. 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+7.	Predict the output of the following code snippets:
+#include <iostream>
+using namespace std;
+
+int main() {
+inti=0,x=0;
+for(i=1;i<10;i*=2){
+x++;
+cout<<x;
+}
+cout<<x;
+return 0;
+}
+Options:
+A.	1234567899
+B.	12345678910
+C.	123455
+D.	12344
+
+
+Ans:	The output will be 12344(Option D).
+
+	i	x	x++
+	1	1	2
+	2	2	3
+	4	3	4
+	8	4	4
+	16(The loop will terminate)
+	The last cout wii hold the value of x=4.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+8.	How many times 'its a while loop' should be printed?
+#include <iostream>
+using namespace std;
+
+int main(){
+inti = 1 ;
+i = i - 1 ;
+
+while(i){
+cout<<"its a while loop";
+i++ ;
+}
+return 0;
+}
+Options:
+A.	1
+B.	2
+C.	0
+D.	Infinite Times
+
+Ans:
+	Here no condition is passed inside the while loop,but the loop will be executed once.
+	So the number of output will be 0 (Option C).
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+9.	What should be the output of below program?
+#include <iostream>
+using namespace std;
+	
+int main(){
+int a = 1;
+switch(a)    {
+case 1: cout<<"One";
+case 2: cout<<"Two";
+case 3: cout<<"Three";
+default: cout<<"Default";
+    }
+return 0;
+}
+Options:
+A.	One
+B.	Compilation Error
+C.	Default
+D.	OneTwoThree
+
+
+Ans:
+	The output will be OneTwoThreeDefault because switch construct can be executed on variable only.
+	So the option is D. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+10.	What should be output of below program
+if use enter a = 5?
+#include <iostream>
+using namespace std;
+
+int main(){
+int a;
+cin>>a; // user can enter any value    
+if (++a*5 <= 25)	{
+	cout<<"Hello";
+	}
+	else	{
+	cout<<"Bye";	
+	}
+}
+Options:
+A.	Hello
+B.	Bye
+C.	Undefined
+D.	Compilation Error
+
+
+Ans:	the output will be Bye.(Option B)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
